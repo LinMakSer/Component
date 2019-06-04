@@ -1,0 +1,23 @@
+<p>
+  some works!
+</p>
+
+<input type="text" placeholder="name" #inputName>
+<input type="text" placeholder="age" #inputAge>
+<button (click)="onAddUser(inputName.value, inputAge.value)">Add user</button>
+
+
+<ul>
+  <li *ngFor="let user of arrayUsers">
+    {{user.name}}
+  </li>
+
+</ul>
+
+
+
+<!-- {{ arrayUsers[0].name }}
+<br>
+{{ arrayUsers[0].age }}
+<br>
+{{ arrayUsers[1].name }} -->
