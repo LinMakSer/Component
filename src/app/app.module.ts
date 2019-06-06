@@ -3,24 +3,44 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { C1Component } from './c1/c1.component';
-import { C2Component } from './c2/c2.component';
-import { C3Component } from './c3/c3.component';
-import { TestModule } from './test/test.module';
+
+import {HttpClientModule} from '@angular/common/http';
+// import { SomeService } from './some.service';
+import { FirstModule } from './first/first.module';
+import { SecondModule } from './second/second.module';
+import { SomeService } from './some.service';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    C1Component,
-    C2Component,
-    C3Component
   ],
   imports: [
     BrowserModule, 
     FormsModule,
-    TestModule
+    HttpClientModule,
+    FirstModule.forRoot({
+      test:"Hello world"
+    }),
+    SecondModule
+    
   ],
-  providers: [],
+  providers: [
+    {
+      provide: SomeService,
+      useClass: SomeService
+    },
+    {
+      provide: 'MY_SUPER_SERVICE',
+      useValue: {value: 'Value from AppModule'},
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  // constructor(private someService: SomeService) {
+  //   console.log(this.someService)
+  // }
+ }

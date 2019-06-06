@@ -1,23 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { SomeService } from './some.service';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  // providers: [SomeService]
 })
 export class AppComponent {
-  title = 'hello-world';
-
-  newTitle: string = '';
-
-  constructor() {
-    
+ 
+  constructor(private someService: SomeService) {
+    console.log(this.someService);
   }
 
 
-onReturnText(newTitle) {
-  this.newTitle = newTitle;
-}
 
 }
